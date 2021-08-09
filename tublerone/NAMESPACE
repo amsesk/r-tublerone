@@ -1,0 +1,3 @@
+exportPattern("^[[:alpha:]]+")
+importFrom(ape,root)
+importFrom(phytools,getDescendants,bind.tip)
