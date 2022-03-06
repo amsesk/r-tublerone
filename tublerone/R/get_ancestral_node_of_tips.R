@@ -5,6 +5,16 @@ get_ancestral_node_of_tips = function(tree,
   if(!strict) {
     print("tublerone::get_ancestral_node_of_tips :: `strict` is OFF")
   }
+
+  tips_present = tiplabels %in% tree$tip.label
+  if (!all(tips_present)) {
+    missing_tips = which(!tiplabels %in% tree$tip.label)
+    missing_tiplabels = tiplabels[missing_tips]
+    print(paste("The tree is missing these tip labels, which are referenced in the tip column: ", missing_tiplabels))
+    print("Ignoring these missing tips.")
+    tiplabels = tiplabels[-missing_tips]
+  }
+
   ntips = length(tree$tip.label)
   nnodes = tree$Nnode
   internal_node_numbers = (ntips+1):(ntips+nnodes)
@@ -29,6 +39,9 @@ get_ancestral_node_of_tips = function(tree,
       } else {
         return(i)
       }
+    } else {
+      #Do nothing
+      p=NULL
     }
   }
 
