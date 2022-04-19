@@ -57,10 +57,10 @@ GatkAfHistGen <- function(df, isolate, approx_norm_binom_stdev = NULL, stats = N
       pull(mean_coverage)
 
     out_plt = out_plt +
-      annotate("text", x=Inf, y=Inf, label=paste(round(mean_coverage,1), "x coverage", sep =""), sep=" ", vjust=1.3, hjust=1.2, cex=2.5) +
+      annotate("text", x=Inf, y=Inf, label=paste(format(round(mean_coverage,1), nsmall=1), "x coverage", sep =""), sep=" ", vjust=1.3, hjust=1.2, cex=2.5) +
       annotate("text", x=Inf, y=Inf, label=paste(dim(df)[1], "SNPs", sep=" "), vjust=2.7, hjust=1.2, cex=2.5) +
-      annotate("text", x=Inf, y=Inf, label=paste(round(p_in_binom_expect,2), "in expect"), sep=" ", vjust=4.1, hjust=1.2, cex=2.5) +
-      annotate("text", x=Inf, y=Inf, label=paste(round(snp_density,8), "SNP/bp"), sep=" ", vjust=5.5, hjust=1.1, cex=2.5)
+      annotate("text", x=Inf, y=Inf, label=paste(format(round(p_in_binom_expect,2), nsmall=2), "in expect"), sep=" ", vjust=4.1, hjust=1.2, cex=2.5) +
+      annotate("text", x=Inf, y=Inf, label=paste(format(round(snp_density,8), nsmall=2), "SNP/bp"), sep=" ", vjust=5.5, hjust=1.1, cex=2.5)
   }
 
   out_plt

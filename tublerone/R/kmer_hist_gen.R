@@ -20,17 +20,21 @@ KmerHistGen <- function(prefix, coverages = NULL, title = basename(prefix), xmax
 
   if(is.null(xmax)) {
     xmax = max(peaks$center)*3.0
+  } else {
+    xmax = as.numeric(xmax)
   }
   if(is.null(ymax)) {
     ymax = hist[peaks[1,2],3]*1.5
+  } else {
+    ymax = as.numeric(ymax)
   }
 
   #if ( (y_max < max(peaks$max)) | (y_max > max(peaks$max)*10 )) {
   #  y_max = max(peaks$max)*1.25
   #}
   ggplot(hist) +
-    geom_point(aes(x=depth, y=count)) +
-    geom_line(aes(x=depth, y=count)) +
+    #geom_point(aes(x=depth, y=count)) +
+    geom_line(aes(x=depth, y=count), size = 2) +
     ylim(0,ymax) +
     xlim(0,xmax) +
     geom_vline(xintercept = peaks[1,]$center, colour = "blue", alpha=0.5) +
