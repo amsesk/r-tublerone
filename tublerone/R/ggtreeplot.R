@@ -2,7 +2,7 @@
 ### With minor adaptation
 
 ggtreeplot <- function(ggtree, data = NULL, mapping = aes(), flip=FALSE,
-                       expand_limits=c(0,.6), ...){
+                       expand_limits=expansion(0,0.6), ...){
 
   if(!inherits(ggtree, "ggtree"))
     stop("not a ggtree object")
