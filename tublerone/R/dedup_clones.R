@@ -23,7 +23,7 @@ dedup_clones = function(snp_pairwise, minimum_dist = 0) {
 
   identicals = list()
   for (row in rownames(snp_pairwise)) {
-    identicals[[row]] = sort(colnames(snp_pairwise)[which(snp_pairwise[row, ] == minimum_dist)])
+    identicals[[row]] = sort(colnames(snp_pairwise)[which(snp_pairwise[row, ] <= minimum_dist)])
   }
 
   # Get ride of duplicate vectors so that each list entry is a unique group of identicals
