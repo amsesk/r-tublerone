@@ -4,7 +4,6 @@ library(gtable)
 library(phytools)
 library(tidyverse)
 
-setwd("/home/ubuntu/mnt/general/paris")
 S = read.newick("NewHanta_S.trim.contree")
 M = read.newick("NewHanta_M.trim.contree")
 SM = read.newick("NewWorld_Hanta_SM.msa.contree")
