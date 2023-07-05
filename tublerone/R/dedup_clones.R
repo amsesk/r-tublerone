@@ -26,7 +26,7 @@ dedup_clones = function(snp_pairwise, minimum_dist = 0) {
     identicals[[row]] = sort(colnames(snp_pairwise)[which(snp_pairwise[row, ] <= minimum_dist)])
   }
 
-  # Get ride of duplicate vectors so that each list entry is a unique group of identicals
+  # Get rid of duplicate vectors so that each list entry is a unique group of identicals
   unique_identicals = unique(identicals)
 
   # Arbitrarily pick the first one in each group of identicals
