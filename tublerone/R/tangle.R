@@ -4,28 +4,28 @@ library(gtable)
 library(phytools)
 library(tidyverse)
 
-S = read.newick("NewHanta_S.trim.contree")
-M = read.newick("NewHanta_M.trim.contree")
-SM = read.newick("NewWorld_Hanta_SM.msa.contree")
+#S = read.newick("NewHanta_S.trim.contree")
+#M = read.newick("NewHanta_M.trim.contree")
+#SM = read.newick("NewWorld_Hanta_SM.msa.contree")
 
-S$tip.label = sapply(strsplit(S$tip.label, "_", fixed=T), "[[", 1)
-M$tip.label = sapply(strsplit(M$tip.label, "_", fixed=T), "[[", 1)
-SM$tip.label = sapply(strsplit(SM$tip.label, "_", fixed=T), "[[", 1)
+#S$tip.label = sapply(strsplit(S$tip.label, "_", fixed=T), "[[", 1)
+#M$tip.label = sapply(strsplit(M$tip.label, "_", fixed=T), "[[", 1)
+#SM$tip.label = sapply(strsplit(SM$tip.label, "_", fixed=T), "[[", 1)
 
-S = ape::root(S, outgroup = "Seoul")
-M = ape::root(M, outgroup = "Seoul")
-SM = ape::root(SM, outgroup = "Seoul")
+#S = ape::root(S, outgroup = "Seoul")
+#M = ape::root(M, outgroup = "Seoul")
+#SM = ape::root(SM, outgroup = "Seoul")
 
-names(S)
-S$edge.length = rep(1, length(S$edge.length))
-M$edge.length = rep(1, length(M$edge.length))
-SM$edge.length = rep(1, length(SM$edge.length))
+#names(S)
+#S$edge.length = rep(1, length(S$edge.length))
+#M$edge.length = rep(1, length(M$edge.length))
+#SM$edge.length = rep(1, length(SM$edge.length))
 
-Sgt = ggtree(S)
-Mgt = ggtree(M)
-SMgt = ggtree(SM)
+#Sgt = ggtree(S)
+#Mgt = ggtree(M)
+#SMgt = ggtree(SM)
 
-ts = list(Sgt, Mgt, SMgt)
+#ts = list(Sgt, Mgt, SMgt)
 get_tip_coords = function(ggtrees, tip_label) {
     coords = tibble()
     for (ggtree in ggtrees) {
@@ -93,11 +93,11 @@ split_segments = function(coords) {
     splseg %>% pivot_wider(names_from = "value_type", values_from="value")
 }
 
-coords = lapply(S$tip.label, get_tip_coords, ggtrees = ts) 
-coords = do.call(bind_rows, lapply(coords, apply_offsets)) 
-coords
-coords=do.call(bind_rows, apply(coords, 1, split_segments))
-cairo_pdf()
-tangletime(ts, coords)
-dev.off()
+#coords = lapply(S$tip.label, get_tip_coords, ggtrees = ts) 
+#coords = do.call(bind_rows, lapply(coords, apply_offsets)) 
+#coords
+#coords=do.call(bind_rows, apply(coords, 1, split_segments))
+#cairo_pdf()
+#tangletime(ts, coords)
+#dev.off()
 
