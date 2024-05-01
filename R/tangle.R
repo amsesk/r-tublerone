@@ -1,7 +1,6 @@
 library(ggtree)
 library(ggplot2)
 library(gtable)
-library(phytools)
 library(tidyverse)
 
 #S = read.newick("NewHanta_S.trim.contree")
