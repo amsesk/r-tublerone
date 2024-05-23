@@ -52,7 +52,8 @@ plot_volcanoes_multi = function(results,
     d = combinations[row,2]
     sub = subset(results, fc_numerator == n & fc_denominator == d)
     title = glue("{n} vs {d}")
-    sub = sub %>% mutate(display_label = ifelse(sub$gene %in% pull(sub %>% filter(is_sig) %>% slice_min(padj, n=n_label), gene), TRUE, FALSE))
+    sub = sub %>% 
+      dplyr::mutate(display_label = ifelse(sub$gene %in% dplyr::pull(sub %>% dplyr::filter(is_sig) %>% dplyr::slice_min(padj, n=n_label), gene), TRUE, FALSE))
     plts[[row]] = ggplot(data = sub,  aes(x = log2FoldChange, y = -log10(padj), color = is_sig)) +
       geom_point(size = dotsize) +
       geom_text_repel(data = subset(sub, display_label), aes(label = gene), color='black', size = labelsize) +
