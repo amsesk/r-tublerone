@@ -1,6 +1,3 @@
-library(Matrix)
-library(Seurat)
-
 mtx_to_seurat = function(
                         mtx,
                         obs,
@@ -9,7 +6,7 @@ mtx_to_seurat = function(
                         feature_column = "feature"
                         ) {
 
-  counts = t(Matrix::readMM(mtx))
+  counts = Matrix::t(Matrix::readMM(mtx))
   cell.metadata = read.table(
                          obs,
                          sep = ",",
