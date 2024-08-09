@@ -43,6 +43,7 @@ plot_volcanoes_multi = function(results,
                                 height = 4.25,
                                 dotsize = 0.2,
                                 labelsize = 2,
+                                show_n_de = TRUE,
                                 return_figs = FALSE
                                 ) {
 
@@ -54,7 +55,7 @@ plot_volcanoes_multi = function(results,
     title = glue("{n} vs {d}")
     sub = sub %>% 
       dplyr::mutate(display_label = ifelse(sub$gene %in% dplyr::pull(sub %>% dplyr::filter(is_sig) %>% dplyr::slice_min(padj, n=n_label), gene), TRUE, FALSE))
-    plts[[row]] = ggplot(data = sub,  aes(x = log2FoldChange, y = -log10(padj), color = is_sig)) +
+    plt = ggplot(data = sub,  aes(x = log2FoldChange, y = -log10(padj), color = is_sig)) +
       geom_point(size = dotsize) +
       geom_text_repel(data = subset(sub, display_label), aes(label = gene), color='black', size = labelsize) +
       geom_hline(yintercept = -log10(alpha), linetype = 'dashed') +
@@ -64,6 +65,13 @@ plot_volcanoes_multi = function(results,
       guides(color = "none") +
       ggtitle(title) +
       theme_classic()
+
+    if (show_n_de) {
+      n_de = nrow(sub[sub$is_sig,])
+      plt = plt + 
+        annotate(geom = "text", label = paste(n_de, "DE", sep = ' '), x = Inf, y = Inf, hjust = 1, vjust = 1, size = 5)
+    }
+    plts[[row]] = plt
   }
   if (return_figs) {
     return(plts)
@@ -75,3 +83,5 @@ plot_volcanoes_multi = function(results,
     dev.off()
   }
 }
+# %%
+
