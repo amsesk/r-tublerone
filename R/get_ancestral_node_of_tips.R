@@ -1,3 +1,6 @@
+#' @importFrom phytools getDescendants
+#' @export
+
 get_ancestral_node_of_tips = function(tree,
                                       tiplabels,
                                       strict = T) {
