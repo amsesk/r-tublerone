@@ -1,6 +1,10 @@
 ### Credit to https://thackl.github.io/ggtree-composite-plots, thackl on GitHub
 ### With minor adaptation
 
+#' @importFrom ggplot2 ggplot scale_x_continuous scale_y_continuous
+#' @importFrom dplyr mutate
+#' @export
+
 ggtreeplot <- function(ggtree, data = NULL, mapping = aes(), flip=FALSE,
                        expand_limits=expansion(0,0.6), ...){
 
