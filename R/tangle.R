@@ -1,7 +1,9 @@
-library(ggtree)
-library(ggplot2)
-library(gtable)
-library(tidyverse)
+#' @importFrom ggplot2 ggplot geom_segment
+#' @importFrom ggtree geom_tree
+#' @importFrom dyplr mutate group_by
+#' @importFrom tidyverse as_tibble pivot_wider
+#' @importFrom ape root
+#' @export
 
 #S = read.newick("NewHanta_S.trim.contree")
 #M = read.newick("NewHanta_M.trim.contree")
@@ -25,6 +27,9 @@ library(tidyverse)
 #SMgt = ggtree(SM)
 
 #ts = list(Sgt, Mgt, SMgt)
+
+#library(gtable)
+
 get_tip_coords = function(ggtrees, tip_label) {
     coords = tibble()
     for (ggtree in ggtrees) {
