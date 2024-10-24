@@ -2,11 +2,7 @@
 #'
 #' @description creates a tanglegram for evaluation of phylogenetic concordance by drawing a line segment between the same tip label of multiple trees
 #'
-#' @param get_tip_coords 
-#' @param apply_offsets 
-#' @param tangletime
-#' @param coord_pairs
-#' @param split_segments
+#' @param ggtrees A list of ggtree objects that are to be evaluated for phylogenetic congruence
 #'
 #' @importFrom ggplot2 ggplot geom_segment
 #' @importFrom ggtree geom_tree
@@ -37,8 +33,6 @@
 #SMgt = ggtree(SM)
 
 #ts = list(Sgt, Mgt, SMgt)
-
-#library(gtable)
 
 get_tip_coords = function(ggtrees, tip_label) {
     coords = tibble()
