@@ -2,7 +2,7 @@
 #'
 #' @description creates a tanglegram for evaluation of phylogenetic concordance by drawing a line segment between the same tip label of multiple trees
 #'
-#' @param ggtrees A list of ggtree objects that are to be evaluated for phylogenetic congruence
+#' @param ggtrees A list of ggtrees generated from phylo objects that are to be evaluated for phylogenetic congruence
 #'
 #' @importFrom ggplot2 ggplot geom_segment
 #' @importFrom ggtree geom_tree
