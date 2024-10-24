@@ -2,6 +2,12 @@
 #'
 #' @description creates a tanglegram for evaluation of phylogenetic concordance by drawing a line segment between the same tip label of multiple trees
 #'
+#' @param get_tip_coords 
+#' @param apply_offsets 
+#' @param tangletime
+#' @param coord_pairs
+#' @param split_segments
+#'
 #' @importFrom ggplot2 ggplot geom_segment
 #' @importFrom ggtree geom_tree
 #' @importFrom dyplr mutate group_by
