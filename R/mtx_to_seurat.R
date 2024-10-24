@@ -1,3 +1,7 @@
+#' @importFrom Matrix readMM
+#' @importFrom Seurat reateSeuratObject
+#' @export
+
 mtx_to_seurat = function(
                         mtx,
                         obs,
