@@ -1,3 +1,7 @@
+#' @title phylo_rename_tips
+#'
+#' @description Rename the tip labels of a ggtree object.
+
 phylo_rename_tips = function(phylo, old_to_new) {
   new_tiplabs = c()
   for (tip in phylo$tip.label) {
