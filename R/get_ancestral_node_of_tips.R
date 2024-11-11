@@ -1,4 +1,7 @@
-
+#' @title get_ancestral_node_of_tips
+#'
+#' @description 
+#'
 #' @param tips_present Tip labels from tree.
 #' @param missing_tips Missing tips.
 #' @param missing_tiplabels Tip labels missing from tree. 
