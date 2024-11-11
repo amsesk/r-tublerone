@@ -1,3 +1,15 @@
+
+#' @param tips_present Tip labels from tree.
+#' @param missing_tips Missing tips.
+#' @param missing_tiplabels Tip labels missing from tree. 
+#' @param ntips Number of tips.
+#' @param nnodes Number of nodes.
+#' @param internal_node_numbers
+#' @param other_tiplabels
+#' @param descendants
+#' @param node_desc_clade_sizes
+#' @param descendant_tips
+#'
 #' @importFrom phytools getDescendants
 #' @export
 
