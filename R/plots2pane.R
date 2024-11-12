@@ -17,6 +17,8 @@
 #' plots[[2]] = ggplot(dataset, aes(x=x, y=y)) + geom_line()
 #' plots2pane(plots, 1, 2)
 #'
+#' @importFrom ggplot2 ggplot ggplotGrob theme geom_blank
+#' @importFrom grid grid.newpage grid.draw
 #' @export
 
 plots2pane<-function(plt_list, rows, cols) {

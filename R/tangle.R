@@ -1,7 +1,15 @@
-library(ggtree)
-library(ggplot2)
-library(gtable)
-library(tidyverse)
+#' @title tangle
+#'
+#' @description creates a tanglegram for evaluation of phylogenetic concordance by drawing a line segment between the same tip label of multiple trees
+#'
+#' @param ggtrees A list of ggtrees generated from phylo objects that are to be evaluated for phylogenetic congruence
+#'
+#' @importFrom ggplot2 ggplot geom_segment
+#' @importFrom ggtree geom_tree
+#' @importFrom dyplr mutate group_by
+#' @importFrom tidyverse as_tibble pivot_wider
+#' @importFrom ape root
+#' @export
 
 #S = read.newick("NewHanta_S.trim.contree")
 #M = read.newick("NewHanta_M.trim.contree")
@@ -25,6 +33,7 @@ library(tidyverse)
 #SMgt = ggtree(SM)
 
 #ts = list(Sgt, Mgt, SMgt)
+
 get_tip_coords = function(ggtrees, tip_label) {
     coords = tibble()
     for (ggtree in ggtrees) {

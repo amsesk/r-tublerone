@@ -1,3 +1,6 @@
+#' @importFrom phytools getDescendants
+#' @export
+
 insert_clade = function(clade,
                         tree,
                         node,
