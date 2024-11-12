@@ -9,6 +9,18 @@ Description: Some useful R classes and functions that were useful to my research
 License: GPL 3.0
 Encoding: UTF-8
 LazyData: true
-Imports: Matrix
-Depends: tidyverse, ggtree, phytools, ggrepel, Matrix
-
+Depends:
+    BiocManager,
+    languageserver,
+    devtools,
+    styler
+Remotes:
+    bioc::release/GenomicRanges
+Imports: 
+    Matrix,
+    tidyverse,
+    ggtree,
+    phytools,
+    ggrepel,
+    GenomicRanges
+RoxygenNote: 7.3.1
