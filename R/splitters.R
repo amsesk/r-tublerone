@@ -21,3 +21,46 @@ vec_split = function(vec, chunk_size) {
   }
   chunks
 }
+
+# %%
+split_range_size = function(r, split_size) {
+  split(r, ceiling(r/split_size))
+}
+
+# %% BUG: Errors when length(r) == n_splits, which wouldn't really be a useful split anyways
+split_range_n = function(r, n_splits=NULL) {
+  n = length(r)
+  g = n_splits
+  if (g>=n) {
+    rlang::abort("n_splits must be < length(r)")
+  }
+  n_groups = list(
+    n%%g,
+    g-(n%%g)
+  )
+  group_sizes = list(
+    (n-(n%%g)+g)/g,
+    (n-(n%%g))/g
+  )
+  check = purrr::reduce2(n_groups, group_sizes, \(.sum, .ng, .gs) {
+    .sum + (.ng*.gs)
+  }, .init=0)
+  stopifnot(check==n)
+
+  breaks = list(
+    r[min(r):((min(r)+(n_groups[[1]]*group_sizes[[1]]))-1)],
+    r[((min(r)+(n_groups[[1]]*group_sizes[[1]]))):max(r)]
+  )
+  # print(group_sizes)
+  # print(n_groups)
+  out = map2(breaks, group_sizes, \(.b, .gs) {
+    map(split_size(1:length(.b), .gs), \(.i) {
+      .b[.i]
+    })
+  }) %>%
+    list_flatten() %>%
+    set_names(1:reduce(n_groups, sum))
+  stopifnot( (out %>% unlist %>% sum) == sum(r) )
+  # stopifnot( (out %>% map(length) %>% unlist %>% sum) == length(r) )
+  return(out)
+}
